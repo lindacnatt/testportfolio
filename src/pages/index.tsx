@@ -6,6 +6,8 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+import "../styling/navbar.scss"
+import Navbar from "../components/navbar"
 
 type Data = {
   site: {
@@ -36,14 +38,15 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
+      <Navbar />
+      <SEO title="Linda Portfolio" />
       <Bio />
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
           <article key={node.fields.slug}>
             <header>
-              <h3
+              <h1
                 style={{
                   marginBottom: rhythm(1 / 4),
                 }}
@@ -51,11 +54,12 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
                 <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
                   {title}
                 </Link>
-              </h3>
+              </h1>
               <small>{node.frontmatter.date}</small>
             </header>
-            <section>
-              <p
+            <section
+            >
+              <h3
                 dangerouslySetInnerHTML={{
                   __html: node.frontmatter.description || node.excerpt,
                 }}

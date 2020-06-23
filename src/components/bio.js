@@ -11,12 +11,13 @@ import Image from "gatsby-image"
 
 import { rhythm } from "../utils/typography"
 
+
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+      avatar: file(absolutePath: { regex: "/PinkLindaSquare.jpg/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
+          fixed(width: 400, height: 400) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -40,29 +41,29 @@ const Bio = () => {
     <div
       style={{
         display: `flex`,
-        marginBottom: rhythm(2.5),
+        flexDirection: "column"
       }}
     >
-      <Image
-        fixed={data.avatar.childImageSharp.fixed}
-        alt={author.name}
-        style={{
-          marginRight: rhythm(1 / 2),
-          marginBottom: 0,
-          minWidth: 50,
-          borderRadius: `100%`,
-        }}
-        imgStyle={{
-          borderRadius: `50%`,
-        }}
-      />
-      <p>
-        Written by <strong>{author.name}</strong> {author.summary}
-        {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>
-          You should follow him on Twitter
+      <div>
+        <Image
+          fixed={data.avatar.childImageSharp.fixed}
+          alt={author.name}
+          style={{
+            width: '20vw',
+            height: '20vh'
+          }}
+          imgStyle={{
+            borderRadius: `50%`,
+          }}
+        />
+        <p>
+          <strong>{author.name}</strong> {author.summary}
+          {` `}
+          <a href={`https://twitter.com/${social.twitter}`}>
+            You should follow him on Twitter
         </a>
-      </p>
+        </p>
+      </div>
     </div>
   )
 }
