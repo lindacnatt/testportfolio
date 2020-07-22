@@ -7,7 +7,6 @@ import "../styling/general.scss"
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   let header
-
   if (location.pathname === rootPath) {
     header = (
       <h1
@@ -54,14 +53,25 @@ const Layout = ({ location, title, children }) => {
         marginLeft: `auto`,
         marginRight: `auto`,
         padding: `${rhythm(0.5)} ${rhythm(3)}`,
-        width:'80%',
+        width: '80%',
       }}
     >
       <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
+      <footer style={{
+        display: 'flex',
+        justifyContent: ' space-between',
+
+      }}>
+        <div className='right' style={{
+        }}>
+          <p>Linda Cnattingius</p>
+          <p>Linda.cnattingius@gmail.com</p>
+        </div>
+        <div className='left' style={{
+        }}>
+          <p>LinkedIn</p>
+          <p>Github</p>
+        </div>
       </footer>
     </div>
   )

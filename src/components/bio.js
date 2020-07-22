@@ -17,7 +17,7 @@ const Bio = () => {
     query BioQuery {
       avatar: file(absolutePath: { regex: "/PinkLindaSquare.jpg/" }) {
         childImageSharp {
-          fixed(width: 400, height: 400) {
+          fixed(width: 100, height: 100) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -41,7 +41,7 @@ const Bio = () => {
     <div
       style={{
         display: `flex`,
-        flexDirection: "column"
+        flexDirection: "column",
       }}
     >
       <div>
@@ -49,8 +49,6 @@ const Bio = () => {
           fixed={data.avatar.childImageSharp.fixed}
           alt={author.name}
           style={{
-            width: '20vw',
-            height: '20vh'
           }}
           imgStyle={{
             borderRadius: `50%`,
@@ -59,9 +57,6 @@ const Bio = () => {
         <p>
           <strong>{author.name}</strong> {author.summary}
           {` `}
-          <a href={`https://twitter.com/${social.twitter}`}>
-            You should follow him on Twitter
-        </a>
         </p>
       </div>
     </div>

@@ -4,10 +4,12 @@ import { PageProps, Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
+import Footer from "../components/footer"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 import "../styling/navbar.scss"
 import Navbar from "../components/navbar"
+import FirstPage from "../components/firstPage"
 
 type Data = {
   site: {
@@ -40,7 +42,8 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
     <Layout location={location} title={siteTitle}>
       <Navbar />
       <SEO title="Linda Portfolio" />
-      <Bio />
+      <FirstPage/>
+      <Bio/>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
@@ -89,7 +92,6 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
             title
             description
           }
